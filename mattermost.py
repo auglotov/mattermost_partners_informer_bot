@@ -122,9 +122,11 @@ def send_message(request_data):
                      + problem_type + '\n:hourglass_flowing_sand: **Примерное время восстановления:** '
                      + recovery_time + '\n:speaking_head_in_silhouette: **Сообщение от:** <@' + user_id + '>')
         }
+
         headers = {
             'Content-Type': 'application/json'
         }
+
         json_string = json.dumps(payload, indent=4)
         response = requests.post(MM_HOOK_URL, headers=headers, data=json_string)
         i += 1

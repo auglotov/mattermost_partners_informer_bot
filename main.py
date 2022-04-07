@@ -1,17 +1,16 @@
-from flask import Flask, request
-from mattermost import open_dialog, send_message
+# This is a sample Python script.
 
-app = Flask(__name__)
+# Press ⌃R to execute it or replace it with your code.
+# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
-@app.route('/post', methods=["POST"])
-def send_mes():
-    request_data = request.get_json()
-    return send_message(request_data)
 
-@app.route('/form', methods=["POST"])
-def form():
-    request_data = str(request.form.getlist("trigger_id")).replace("['", "").replace("']", "")
-    return open_dialog(request_data)
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
 
+
+# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    app.run(port='3333', host='127.0.0.1')
+    print_hi('PyCharm')
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/

@@ -3,7 +3,6 @@ import flask
 import requests
 from settings import MM_BOT_TOKEN, MM_API_URL, MM_HOOK_URL, PY_BOT_URL, ICON_URL, CHANNELS
 
-
 def open_dialog(trigger_id):
     dialog = {
         "callback_id": "partners_informer",

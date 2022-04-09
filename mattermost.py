@@ -102,7 +102,7 @@ def open_dialog(trigger_id):
 
     json_string = json.dumps(payload, indent=4)
     response = requests.post(MM_API_URL + '/actions/dialogs/open', headers=headers, data=json_string)
-    print(str(datetime.datetime.now()) + ": Start completed status is " + str(response.status_code))
+    print(str(datetime.datetime.now()) + ": Dialog start completed status is " + str(response.status_code))
     return flask.Response(response)
 
 

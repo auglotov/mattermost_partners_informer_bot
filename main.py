@@ -1,3 +1,4 @@
+import datetime
 from flask import Flask, request
 from mattermost import open_dialog, send_message
 
@@ -11,6 +12,9 @@ def send_mes():
 @app.route('/form', methods=["POST"])
 def form():
     request_data = str(request.form.getlist("trigger_id")).replace("['", "").replace("']", "")
+    user_name = str(request.form.getlist("user_name")).replace("['", "").replace("']", "")
+    channel_name = str(request.form.getlist("channel_name")).replace("['", "").replace("']", "")
+    print(str(datetime.datetime.now()) + ": User '" + user_name + "' executed slash-command in channel '" + channel_name + "'")
     return open_dialog(request_data)
 
 if __name__ == '__main__':

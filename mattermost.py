@@ -1,6 +1,7 @@
 import json
 import flask
 import requests
+import datetime
 from settings import MM_BOT_TOKEN, MM_API_URL, MM_HOOK_URL, PY_BOT_URL, ICON_URL, CHANNELS
 
 def open_dialog(trigger_id):
@@ -36,7 +37,7 @@ def open_dialog(trigger_id):
                     },
                     {
                         "text": "Работа восстановлена",
-                        "value": ":approved:"
+                        "value": ":white_check_mark:"
                     }
                 ]
             },
@@ -101,6 +102,7 @@ def open_dialog(trigger_id):
 
     json_string = json.dumps(payload, indent=4)
     response = requests.post(MM_API_URL + '/actions/dialogs/open', headers=headers, data=json_string)
+    print(str(datetime.datetime.now()) + ": Start completed status is " + str(response.status_code))
     return flask.Response(response)
 
 
@@ -129,6 +131,7 @@ def send_message(request_data):
 
         json_string = json.dumps(payload, indent=4)
         response = requests.post(MM_HOOK_URL, headers=headers, data=json_string)
+        print(str(datetime.datetime.now()) + ": Notification sending status in '" + CHANNELS[i] + "' is " + str(response.status_code))
         i += 1
 
     return flask.Response(response)

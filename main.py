@@ -11,11 +11,11 @@ def send_mes():
 
 @app.route('/form', methods=["POST"])
 def form():
-    request_data = str(request.form.getlist("trigger_id")).replace("['", "").replace("']", "")
+    trigger_id = str(request.form.getlist("trigger_id")).replace("['", "").replace("']", "")
     user_name = str(request.form.getlist("user_name")).replace("['", "").replace("']", "")
     channel_name = str(request.form.getlist("channel_name")).replace("['", "").replace("']", "")
     print(str(datetime.datetime.now()) + ": User '" + user_name + "' executed slash-command in channel '" + channel_name + "'")
-    return open_dialog(request_data)
+    return open_dialog(trigger_id)
 
 if __name__ == '__main__':
     app.run(port='3333', host='127.0.0.1')
